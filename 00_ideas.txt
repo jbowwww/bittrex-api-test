@@ -1,0 +1,14 @@
+
+Crypto code ideas
+
+Volume monitor
+	- 5 m in, 30, hourly, daily, weekly etc
+	- like cryptostat
+Price Watcher & Break out Alert
+	- input coin & breakout level(s)
+		- how hard would it be to detect support/resistance levels?
+			- based on history? order book?)
+	- sends email / integrate with SMS gateway
+Auto-buy-seller
+	-create specified sell orders
+		- when & if buy orders are filled successfully

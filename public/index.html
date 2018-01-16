@@ -1,0 +1,37 @@
+<html>
+<head>
+    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+    <style>
+        #history table td { padding: 0px 5px 0px 5px; }
+    </style>
+</head>
+<body>
+    <input type="text" id="currency" />
+    <input type="button" id="gethistory" />
+    <br/>
+    <div id="history">&nbsp;</div>
+</body>
+</html>
+<script type="text/javascript">
+console.log('test1');
+$(() => {
+    console.log('test2');
+$('#gethistory').click(() => {
+    var url = '/' + $('#currency').val();
+    console.log('test-click url=' + url);
+    var format = val => val ? (val.toPrecision ? val.toFixed(8) : val) : '&nbsp;';
+    $.get(url, function (data, status, xhr) {
+        console.log('data', data, 'status', status)
+        var headers = [];
+        data.forEach(row => Object.getOwnPropertyNames(row).forEach(propName => (headers.indexOf(propName) < 0) && headers.push(propName)));
+        console.log('headers', headers);
+    var historyHtml = '<table><tr>';
+        historyHtml += headers.map(header => '<th>' + header + '</th>').join('');
+        historyHtml += '</tr>';
+        historyHtml += data.map(row => '<tr>' + headers.map(header => '<td>' + (format(row[header])) + '</td>').join('') + '</tr>').join('\n');
+        historyHtml += '</table>';
+        $('#history').html(historyHtml);
+    }, 'json');
+});
+});
+</script>

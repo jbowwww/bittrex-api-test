@@ -1,0 +1,9 @@
+
+# Backup files
+*~
+
+# Node modules
+/node_modules/
+
+# Bittrex API keys
+**/bittrex-options.js
